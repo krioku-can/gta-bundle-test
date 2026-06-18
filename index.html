@@ -44,13 +44,13 @@
       font-size: 1.1rem;
       margin-bottom: 24px;
     }
-    .status-badge.available {
-      background: #107c10;
-      color: #fff;
-    }
     .status-badge.unavailable {
       background: #5a1a1a;
       color: #ff6b6b;
+    }
+    .status-badge.available {
+      background: #107c10;
+      color: #fff;
     }
     .toggle-btn {
       background: #3a3a5c;
@@ -72,10 +72,10 @@
     <h1>GTA VI + Xbox Series X Bundle</h1>
     <p class="subtitle">Synthetic test page for Lumi bundle watch</p>
     <div class="product-img">🎮</div>
-    <div id="statusBadge" class="status-badge unavailable">❌ Out of Stock</div>
+    <div id="statusBadge" class="status-badge unavailable">OUT OF STOCK</div>
     <br>
     <button class="toggle-btn" onclick="toggleStock()">Toggle Stock Status</button>
-    <p class="status-text" id="statusText">Current: Out of Stock</p>
+    <p class="status-text" id="statusText">Current: OUT OF STOCK</p>
     <p class="footer">Lumi Bundle Watch · Synthetic Test</p>
   </div>
   <script>
@@ -86,12 +86,12 @@
       const text = document.getElementById('statusText');
       if (available) {
         badge.className = 'status-badge available';
-        badge.textContent = '🟢 Pre-order Now';
-        text.textContent = 'Current: Pre-order Now';
+        badge.textContent = 'PRE-ORDER NOW';
+        text.textContent = 'Current: PRE-ORDER NOW';
       } else {
         badge.className = 'status-badge unavailable';
-        badge.textContent = '❌ Out of Stock';
-        text.textContent = 'Current: Out of Stock';
+        badge.textContent = 'OUT OF STOCK';
+        text.textContent = 'Current: OUT OF STOCK';
       }
     }
   </script>
