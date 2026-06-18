@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+export default function handler(req, res) {
+  const status = req.query.status || 'unavailable';
+  const available = status === 'available';
+
+  const badgeClass = available ? 'available' : 'unavailable';
+  const badgeText = available ? 'PRE-ORDER NOW' : 'OUT OF STOCK';
+
+  res.setHeader('Content-Type', 'text/html');
+  res.status(200).send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -44,27 +52,18 @@
       font-size: 1.1rem;
       margin-bottom: 24px;
     }
-    .status-badge.unavailable {
-      background: #5a1a1a;
-      color: #ff6b6b;
-    }
-    .status-badge.available {
-      background: #107c10;
-      color: #fff;
-    }
+    .status-badge.unavailable { background: #5a1a1a; color: #ff6b6b; }
+    .status-badge.available { background: #107c10; color: #fff; }
     .toggle-btn {
-      background: #3a3a5c;
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
+      background: #3a3a5c; color: #fff; border: none;
+      padding: 12px 24px; border-radius: 8px; font-size: 1rem;
+      cursor: pointer; transition: background 0.2s;
     }
     .toggle-btn:hover { background: #4a4a6c; }
     .status-text { margin-top: 16px; font-size: 0.85rem; color: #666; }
     .footer { margin-top: 24px; font-size: 0.75rem; color: #444; }
+    .links { margin-top: 16px; font-size: 0.8rem; }
+    .links a { color: #888; text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -72,28 +71,15 @@
     <h1>GTA VI + Xbox Series X Bundle</h1>
     <p class="subtitle">Synthetic test page for Lumi bundle watch</p>
     <div class="product-img">🎮</div>
-    <div id="statusBadge" class="status-badge unavailable">OUT OF STOCK</div>
+    <div id="statusBadge" class="status-badge ${badgeClass}">${badgeText}</div>
     <br>
-    <button class="toggle-btn" onclick="toggleStock()">Toggle Stock Status</button>
-    <p class="status-text" id="statusText">Current: OUT OF STOCK</p>
+    <p class="status-text">Current: ${badgeText}</p>
+    <p class="links">
+      <a href="/api/index?status=unavailable">Set OUT OF STOCK</a> ·
+      <a href="/api/index?status=available">Set PRE-ORDER NOW</a>
+    </p>
     <p class="footer">Lumi Bundle Watch · Synthetic Test</p>
   </div>
-  <script>
-    let available = false;
-    function toggleStock() {
-      available = !available;
-      const badge = document.getElementById('statusBadge');
-      const text = document.getElementById('statusText');
-      if (available) {
-        badge.className = 'status-badge available';
-        badge.textContent = 'PRE-ORDER NOW';
-        text.textContent = 'Current: PRE-ORDER NOW';
-      } else {
-        badge.className = 'status-badge unavailable';
-        badge.textContent = 'OUT OF STOCK';
-        text.textContent = 'Current: OUT OF STOCK';
-      }
-    }
-  </script>
 </body>
-</html>
+</html>`);
+}
