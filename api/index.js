@@ -75,8 +75,8 @@ export default function handler(req, res) {
     <br>
     <p class="status-text">Current: ${badgeText}</p>
     <p class="links">
-      <a href="/api/index?status=unavailable">Set OUT OF STOCK</a> ·
-      <a href="/api/index?status=available">Set PRE-ORDER NOW</a>
+      <a href="/api/index?status=unavailable">[Set: Out of Stock]</a> ·
+      <a href="/api/index?status=available">[Set: Available]</a>
     </p>
     <p class="footer">Lumi Bundle Watch · Synthetic Test</p>
   </div>
