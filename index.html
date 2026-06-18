@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA VI Bundle Test Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
+    .subtitle { color: #888; font-size: 0.9rem; margin-bottom: 24px; }
+    .product-img {
+      width: 200px; height: 200px;
+      background: linear-gradient(135deg, #2d1b69, #107c10);
+      border-radius: 12px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+    .status-badge.available {
+      background: #107c10;
+      color: #fff;
+    }
+    .status-badge.unavailable {
+      background: #5a1a1a;
+      color: #ff6b6b;
+    }
+    .toggle-btn {
+      background: #3a3a5c;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: #4a4a6c; }
+    .status-text { margin-top: 16px; font-size: 0.85rem; color: #666; }
+    .footer { margin-top: 24px; font-size: 0.75rem; color: #444; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>GTA VI + Xbox Series X Bundle</h1>
+    <p class="subtitle">Synthetic test page for Lumi bundle watch</p>
+    <div class="product-img">🎮</div>
+    <div id="statusBadge" class="status-badge unavailable">❌ Out of Stock</div>
+    <br>
+    <button class="toggle-btn" onclick="toggleStock()">Toggle Stock Status</button>
+    <p class="status-text" id="statusText">Current: Out of Stock</p>
+    <p class="footer">Lumi Bundle Watch · Synthetic Test</p>
+  </div>
+  <script>
+    let available = false;
+    function toggleStock() {
+      available = !available;
+      const badge = document.getElementById('statusBadge');
+      const text = document.getElementById('statusText');
+      if (available) {
+        badge.className = 'status-badge available';
+        badge.textContent = '🟢 Pre-order Now';
+        text.textContent = 'Current: Pre-order Now';
+      } else {
+        badge.className = 'status-badge unavailable';
+        badge.textContent = '❌ Out of Stock';
+        text.textContent = 'Current: Out of Stock';
+      }
+    }
+  </script>
+</body>
+</html>
